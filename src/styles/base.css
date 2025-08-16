@@ -22,7 +22,7 @@ body, button, input, select {
 
 .primary-btn {
   background: var(--primary);
-  color: var(--bg);
+  color: #f5f5f5;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 6px;
