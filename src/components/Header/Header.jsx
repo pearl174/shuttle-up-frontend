@@ -1,10 +1,17 @@
-const Header = () => {
+import themeIcon from "../../assets/theme-icon.svg";
+import "./Header.css";
+
+const Header = (props) => {
+    const toggleTheme = props.toggleTheme;
+
     return (
         <div className="flex-container">
-            <div>Shuttle Up</div>
-            <div><img src="" alt="" /></div>
-            <button>LOGIN</button>
-            <button>SIGNUP</button>
+            <div className="logo">SHUTTLE UP</div>
+            <div className="button-container">
+                <button onClick={toggleTheme} className="toggle-theme" aria-label="toggle-theme"><img src={themeIcon} alt="Theme toggle" /></button>
+                <button className="primary-btn">LOGIN</button>
+                <button className="primary-btn">SIGNUP</button>
+            </div>
         </div>
     )
 }
