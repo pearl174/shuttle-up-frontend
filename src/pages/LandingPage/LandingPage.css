@@ -1,0 +1,6 @@
+.image-holder {
+    background-image: url("../../assets/badminton-court.png");
+    background-size: cover;
+    width: 100vw;
+    height: calc(100vh)
+}
