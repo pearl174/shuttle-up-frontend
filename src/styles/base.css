@@ -1,0 +1,64 @@
+body, button, input, select {
+  font-family: sans-serif;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.link {
+  color: var(--primary);
+  text-decoration: none;
+}
+.link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: var(--bg);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.primary-btn:hover {
+  background: var(--primary-hover);
+}
+
+.secondary-btn {
+  background: var(--secondary);
+  color: var(--bg);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.secondary-btn:hover {
+  background: var(--secondary-hover);
+}
+
+.card {
+  background: var(--bg-alt);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+input, select {
+  display: block;
+  /* width: 100%; */
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
