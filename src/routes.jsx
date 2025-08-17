@@ -1,5 +1,6 @@
 import Layout from "./Layout.jsx"
 import LandingPage from "./pages/LandingPage/LandingPage"
+import SignUp from "./pages/SignUp/SignUp.jsx";
 
 const routes = [
     {
@@ -10,6 +11,10 @@ const routes = [
                 index: true,
                 element: <LandingPage />
             },
+            {
+                path: "/signup",
+                element: <SignUp />
+            }
         ]
     }
 ]
