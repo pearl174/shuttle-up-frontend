@@ -59,7 +59,7 @@ input, select {
   margin-bottom: 1rem;
   border: 1px solid var(--border);
   border-radius: 4px;
-  background: var(--bg-alt);
+  background: var(--bg);
   color: var(--text);
 }
 
