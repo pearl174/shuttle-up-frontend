@@ -8,14 +8,15 @@
     background-color: var(--bg-alt);
     border-radius: 6px;
     padding: 3em 2em;
-    margin-top: 6em;
+    margin-top: 5em;
+    margin-bottom: 2em;
 }
 
 .flex-container-signup {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items:baseline;
-    height: calc(100vh - 66px);
     background-color: var(--bg);
 }
 
