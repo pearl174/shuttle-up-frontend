@@ -8,7 +8,7 @@ const SignUp = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState(""):
     const [password, setPassword] = useState("");
-    
+
     const handleRegister = async (e) => {
         e.preventDefault();
         const username = document
@@ -24,11 +24,30 @@ const SignUp = () => {
         <div className="flex-container-signup">
             <form className="signup-form" action="/" method="POST">
                 <label htmlFor="username">Username</label>
-                <input type="text" name="username" id="username" required placeholder="johndoe" />
+                <input 
+                    type="text" 
+                    id="username" 
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required 
+                    placeholder="johndoe" />
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" id="email" required placeholder="johndoe@gmail.com" />
+                <input 
+                    type="email" 
+                    id="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required 
+                    placeholder="johndoe@gmail.com" />
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" id="password" required minLength="6" maxLength="20" />
+                <input 
+                    type="password" 
+                    id="password" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required 
+                    minLength="6" 
+                    maxLength="20" />
                 <button type="submit" className="primary-btn register-btn" onClick={(e) => handleRegister(e)}>Register</button>
             </form>
         </div>
