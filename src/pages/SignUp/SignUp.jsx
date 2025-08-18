@@ -19,16 +19,14 @@ const SignUp = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, email, password })
             });
+            const data = await res.json();
 
             if (res.status === 400) {
-                const data = await res.json();
                 console.log(data);
             }
             else if (res.status === 500) {
-                const data = await res.json();
                 console.log(data);
             } else {
-                const data = await res.json();
                 console.log(data);
                 // insert alerts for all of them
                 setTimeout(() => navigate("/"), 1000);
@@ -41,7 +39,7 @@ const SignUp = () => {
     
     return (
         <div className="flex-container-signup">
-            <form className="signup-form" action="/" method="POST">
+            <form className="signup-form" method="POST" onSubmit={handleRegister}>
                 <label htmlFor="username">Username</label>
                 <input 
                     type="text" 
@@ -67,7 +65,7 @@ const SignUp = () => {
                     required 
                     minLength="6" 
                     maxLength="20" />
-                <button type="submit" className="primary-btn register-btn" onClick={(e) => handleRegister(e)}>Register</button>
+                <button type="submit" className="primary-btn register-btn">Register</button>
             </form>
         </div>
     )

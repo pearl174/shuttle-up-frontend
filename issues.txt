@@ -1,2 +1,3 @@
 on refresh, theme goes back to default.
 sign up validation do after testing
+autofill color has to be different in dark mode 
