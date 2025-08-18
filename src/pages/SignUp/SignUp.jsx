@@ -21,7 +21,16 @@ const SignUp = () => {
             }, isError? 3000 : 2000);
             return () => clearTimeout(timer);
         }
-    }, [serverMsg, isError])
+    }, [serverMsg, isError]);
+
+    useEffect(() => {
+        if (errors) {
+            const timer = setTimeout(() => {
+                setErrors({});
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [errors]);
 
     const handleRegister = async (e) => {
         e.preventDefault();
