@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import API_BASE from "../../../config.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SignUp = () => {
     // controlled state for react way of doing things
@@ -11,6 +11,16 @@ const SignUp = () => {
     const [serverMsg, setServerMsg] = useState("");
     const [isError, setIsError] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (serverMsg) {
+            const timer = setTimeout(() => {
+                setServerMsg("");
+                setIsError(false);
+            }, isError? 3000 : 2000);
+            return () => clearTimeout(timer);
+        }
+    }, [serverMsg, isError])
 
     const handleRegister = async (e) => {
         e.preventDefault();
