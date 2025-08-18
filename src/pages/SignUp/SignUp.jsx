@@ -10,6 +10,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const [serverMsg, setServerMsg] = useState("");
     const [isError, setIsError] = useState(false);
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -34,8 +35,16 @@ const SignUp = () => {
             const data = await res.json();
             setServerMsg(data.msg);
             if (res.status === 400) {
-                console.log(data);
-                setIsError(true);
+                if (data.errors) {
+                    const newErrors = {};
+                    data.errors.forEach(err => {
+                        newErrors[err.path] = err.msg;
+                    });
+                    setErrors(newErrors);
+                } else {
+                    console.log(data);
+                    setIsError(true);
+                }
             }
             else if (res.status === 500) {
                 console.log(data);
@@ -44,7 +53,7 @@ const SignUp = () => {
                 setIsError(false);
                 console.log(data);
                 // insert alerts for all of them
-                setTimeout(() => navigate("/"), 1000);
+                setTimeout(() => navigate("/login"), 1000);
             }
         } catch(err) {
             console.error(err);
@@ -56,6 +65,7 @@ const SignUp = () => {
         <div className="flex-container-signup">
             <form className="signup-form" method="POST">
                 <label htmlFor="username">Username</label>
+                {errors && <div className="username-error invalid">{errors.username}</div>}
                 <input 
                     type="text" 
                     id="username" 
@@ -64,6 +74,7 @@ const SignUp = () => {
                     required 
                     placeholder="johndoe" />
                 <label htmlFor="email">Email</label>
+                {errors && <div className="email-error invalid">{errors.email}</div>}
                 <input 
                     type="email" 
                     id="email" 
@@ -72,6 +83,7 @@ const SignUp = () => {
                     required 
                     placeholder="johndoe@gmail.com" />
                 <label htmlFor="password">Password</label>
+                {errors && <div className="password-error invalid">{errors.password}</div>}
                 <input 
                     type="password" 
                     id="password" 
@@ -80,7 +92,7 @@ const SignUp = () => {
                     required 
                     minLength="6" 
                     maxLength="20" />
-                {serverMsg && <div className={`serverMsg ${isError? "invalid": "valid"}`}>{serverMsg}</div>}
+                {serverMsg && <div className={`server-msg ${isError? "invalid": "valid"}`}>{serverMsg}</div>}
                 <button type="submit" className="primary-btn register-btn" onClick={handleRegister}>Register</button>
             </form>
         </div>

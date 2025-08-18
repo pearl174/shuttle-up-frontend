@@ -24,10 +24,14 @@
     margin-top: 1em;
 }
 
-.server-msg.valid {
+.invalid {
+    color: red;
+}
+
+.valid {
     color: green;
 }
 
-.server-msg.invalid {
-    color: red;
+.valid, .invalid {
+    font-size: 0.9em;
 }
