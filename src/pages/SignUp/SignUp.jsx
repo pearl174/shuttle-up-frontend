@@ -1,9 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import API_BASE from "../../../config.js";
+import { useState } from "react";
 
 const SignUp = () => {
-    const navigate = useNavigate();
+    // controlled state for react way of doing things
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState(""):
+    const [password, setPassword] = useState("");
+    
     const handleRegister = async (e) => {
         e.preventDefault();
         const username = document
