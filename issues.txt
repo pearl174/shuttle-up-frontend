@@ -1,0 +1,2 @@
+on refresh, theme goes back to default.
+sign up validation do after testing
