@@ -8,6 +8,8 @@ const SignUp = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [serverMsg, setServerMsg] = useState("");
+    const [isError, setIsError] = useState(false);
     const navigate = useNavigate();
 
     const handleRegister = async (e) => {
@@ -20,13 +22,16 @@ const SignUp = () => {
                 body: JSON.stringify({ username, email, password })
             });
             const data = await res.json();
-
+            setServerMsg(data.msg);
             if (res.status === 400) {
                 console.log(data);
+                setIsError(true);
             }
             else if (res.status === 500) {
                 console.log(data);
+                setIsError(true);
             } else {
+                setIsError(false);
                 console.log(data);
                 // insert alerts for all of them
                 setTimeout(() => navigate("/"), 1000);
@@ -39,7 +44,7 @@ const SignUp = () => {
     
     return (
         <div className="flex-container-signup">
-            <form className="signup-form" method="POST" onSubmit={handleRegister}>
+            <form className="signup-form" method="POST">
                 <label htmlFor="username">Username</label>
                 <input 
                     type="text" 
@@ -65,7 +70,8 @@ const SignUp = () => {
                     required 
                     minLength="6" 
                     maxLength="20" />
-                <button type="submit" className="primary-btn register-btn">Register</button>
+                {serverMsg && <div className={`serverMsg ${isError? "invalid": "valid"}`}>{serverMsg}</div>}
+                <button type="submit" className="primary-btn register-btn" onClick={handleRegister}>Register</button>
             </form>
         </div>
     )

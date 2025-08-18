@@ -23,3 +23,11 @@
 .primary-btn.register-btn {
     margin-top: 1em;
 }
+
+.server-msg.valid {
+    color: green;
+}
+
+.server-msg.invalid {
+    color: red;
+}
