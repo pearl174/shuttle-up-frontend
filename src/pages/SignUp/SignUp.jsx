@@ -6,17 +6,32 @@ import { useState } from "react";
 const SignUp = () => {
     // controlled state for react way of doing things
     const [username, setUsername] = useState("");
-    const [email, setEmail] = useState(""):
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        const username = document
+
         const res = await fetch(`${API_BASE}api/auth/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, email, password })
-        })
+        });
+
+        if (res.status === 400) {
+            const data = await res.json();
+            console.log(data);
+        }
+        else if (res.status === 500) {
+            const data = await res.json();
+            console.log(data);
+        } else {
+            const data = await res.json();
+            console.log(data);
+            // insert alerts for all of them
+            setTimeout(() => navigate("/"), 1000);
+        }
     }
 
     
