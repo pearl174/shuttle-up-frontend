@@ -20,12 +20,13 @@ const Login = () => {
 
     useEffect(() => {
         if (errors) {
-            setTimeout(() => {
+            const timeout = setTimeout(() => {
                 setErrors({});
             }, 5000);
+            return () => clearTimeout(timeout);
         }
     }, [errors]);
-    
+
     const handleLogin = async (e) => {
         e.preventDefault();
         
