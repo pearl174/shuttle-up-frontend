@@ -1,25 +1,69 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Login.css";
+import API_BASE from "../../../config";
 
 const Login = () => {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const [serverMsg, setServerMsg] = useState("");
     const [isError, setIsError] = useState(false);
 
+    useEffect(() => {
+        if (serverMsg) {
+            const timeout = setTimeout(() => {
+                setServerMsg("");
+            }, isError ? 3000 : 2000);
+            return () => clearTimeout(timeout);
+        }
+    }, [serverMsg, isError]);
+
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        
+        try {
+            const res = await fetch(`${API_BASE}api/auth/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await res.json();
+            setServerMsg(data.msg);
+            console.log(data);
+            if (res.status === 400) {
+                if (data.errors) {
+                    const newErrors = {};
+                    data.errors.forEach(err => {
+                        newErrors[err.path] = err.msg;
+                    })
+                    setErrors(newErrors);
+                } else {
+                    console.log(data);
+                    setIsError(true);
+                }
+            } else {
+                console.log(data);
+                setIsError(false);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+        
+    }
+
     return (
         <div className="flex-container-signup">
             <form className="signup-form" method="POST">
-                <label htmlFor="username">Username</label>
-                {errors && <div className="username-error invalid">{errors.username}</div>}
+                <label htmlFor="email">Email</label>
+                {errors && <div className="email-error invalid">{errors.email}</div>}
                 <input 
-                    type="text" 
-                    id="username" 
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    type="email" 
+                    id="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required 
-                    placeholder="johndoe" />
+                    placeholder="johndoe@gmail.com" />
                 
                 <label htmlFor="password">Password</label>
                 {errors && <div className="password-error invalid">{errors.password}</div>}
@@ -32,7 +76,7 @@ const Login = () => {
                     minLength="6" 
                     maxLength="20" />
                 {serverMsg && <div className={`server-msg ${isError? "invalid": "valid"}`}>{serverMsg}</div>}
-                <button type="submit" className="primary-btn register-btn">Register</button>
+                <button type="submit" className="primary-btn register-btn" onClick={handleLogin}>Login</button>
             </form>
         </div>
     )
