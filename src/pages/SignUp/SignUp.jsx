@@ -72,7 +72,7 @@ const SignUp = () => {
     
     return (
         <div className="flex-container-signup">
-            <form className="signup-form" method="POST">
+            <form className="signup-form" method="POST" onSubmit={handleRegister}>
                 <label htmlFor="username">Username</label>
                 {errors && <div className="username-error invalid">{errors.username}</div>}
                 <input 
@@ -102,7 +102,7 @@ const SignUp = () => {
                     minLength="6" 
                     maxLength="20" />
                 {serverMsg && <div className={`server-msg ${isError? "invalid": "valid"}`}>{serverMsg}</div>}
-                <button type="submit" className="primary-btn register-btn" onClick={handleRegister}>Register</button>
+                <button type="submit" className="primary-btn register-btn">Register</button>
             </form>
         </div>
     )
