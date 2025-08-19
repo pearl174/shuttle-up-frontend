@@ -51,7 +51,6 @@ const Login = () => {
                     setIsError(true);
                 }
             } else {
-                console.log(data);
                 setIsError(false);
                 localStorage.setItem("token", data.token);
             }
