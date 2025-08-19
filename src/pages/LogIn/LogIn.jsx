@@ -38,7 +38,7 @@ const Login = () => {
             });
             const data = await res.json();
             setServerMsg(data.msg);
-            console.log(data);
+            // console.log(data);
             if (res.status === 400) {
                 if (data.errors) {
                     const newErrors = {};
@@ -53,6 +53,7 @@ const Login = () => {
             } else {
                 console.log(data);
                 setIsError(false);
+                localStorage.setItem("token", data.token);
             }
         } catch (err) {
             console.error(err);
