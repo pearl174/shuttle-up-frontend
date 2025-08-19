@@ -18,7 +18,14 @@ const Login = () => {
         }
     }, [serverMsg, isError]);
 
-
+    useEffect(() => {
+        if (errors) {
+            setTimeout(() => {
+                setErrors({});
+            }, 5000);
+        }
+    }, [errors]);
+    
     const handleLogin = async (e) => {
         e.preventDefault();
         
@@ -49,7 +56,6 @@ const Login = () => {
         } catch (err) {
             console.error(err);
         }
-        
     }
 
     return (
