@@ -55,7 +55,7 @@ const Login = () => {
             } else {
                 setIsError(false);
                 localStorage.setItem("token", data.token);
-                navigate(`/dashboard/${data.username}`);
+                navigate(`/profile/${data.username}`);
             }
         } catch (err) {
             console.error(err);
