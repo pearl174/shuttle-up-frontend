@@ -3,3 +3,5 @@ sign up validation do after testing
 autofill color has to be different in dark mode 
 on error in signup or anywhere else, if its a fetch error or something, redirect to a cat 404 or oops something went wrong cat page.
 The cats must be pleased and donated sacrifices to.
+
+profile page is not catching shit. for the fetchProfile function. 
