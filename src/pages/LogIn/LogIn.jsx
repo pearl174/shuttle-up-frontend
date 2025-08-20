@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Login.css";
 import API_BASE from "../../../config";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ const Login = () => {
     const [errors, setErrors] = useState({});
     const [serverMsg, setServerMsg] = useState("");
     const [isError, setIsError] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (serverMsg) {
@@ -53,6 +55,7 @@ const Login = () => {
             } else {
                 setIsError(false);
                 localStorage.setItem("token", data.token);
+                navigate(`/dashboard/${data.username}`);
             }
         } catch (err) {
             console.error(err);
@@ -61,7 +64,7 @@ const Login = () => {
 
     return (
         <div className="flex-container-signup">
-            <form className="signup-form" method="POST">
+            <form className="signup-form" method="POST" onSubmit={handleLogin}>
                 <label htmlFor="email">Email</label>
                 {errors && <div className="email-error invalid">{errors.email}</div>}
                 <input 
@@ -83,7 +86,7 @@ const Login = () => {
                     minLength="6" 
                     maxLength="20" />
                 {serverMsg && <div className={`server-msg ${isError? "invalid": "valid"}`}>{serverMsg}</div>}
-                <button type="submit" className="primary-btn register-btn" onClick={handleLogin}>Login</button>
+                <button type="submit" className="primary-btn register-btn">Login</button>
             </form>
         </div>
     )
