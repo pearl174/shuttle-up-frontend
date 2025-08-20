@@ -16,9 +16,11 @@ const Profile = () => {
         const data = await res.json();
         console.log(data);
     }
-    fetchProfile().catch(() => {
-        console.log("Something went wrong")
-    })
+    // fetchProfile().catch(() => {
+    //     console.log("Something went wrong")
+    // })
+
+    
     
     return (
         <h1>Profile page for {username}</h1>
