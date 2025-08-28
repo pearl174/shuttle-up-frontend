@@ -5,3 +5,5 @@ on error in signup or anywhere else, if its a fetch error or something, redirect
 The cats must be pleased and donated sacrifices to.
 
 profile page is not catching shit. for the fetchProfile function. 
+for profile pic, add randomizer to default profile pic. 
+
