@@ -38,6 +38,7 @@ const winrateData = matches.map((m, idx) => {
     winrate: Math.round((wins / total) * 100), // %
   };
 });
+// console.log(winrateData);
 
 const ProgressGraph = () => {
   return (
@@ -58,13 +59,14 @@ const ProgressGraph = () => {
             tickFormatter={(v) => `${v}%`}
           />
           <Tooltip
-            formatter={(v) => `${v}% winrate`}
+            formatter={(v) => `${v}%`}
             labelFormatter={(label) => `Date: ${label}`}
           />
           <Line
             type="monotone"
             dataKey="winrate"
-            stroke="var(--secondary)"   // <- your secondary color
+            name="Winrate"
+            stroke="var(--secondary)"
             strokeWidth={2}
             dot={{ r: 4 }}
             activeDot={{ r: 6 }}
