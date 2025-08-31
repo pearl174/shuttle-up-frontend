@@ -3,5 +3,6 @@
     height: 300px;
     background-color: var(--bg-alt);
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1em;
+    box-sizing: border-box;
 }

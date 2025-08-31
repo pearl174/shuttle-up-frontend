@@ -43,7 +43,7 @@ const winrateData = matches.map((m, idx) => {
 const ProgressGraph = () => {
   return (
     <div className="graph-container">
-      <ResponsiveContainer>
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart data={winrateData}>
           <CartesianGrid strokeDasharray="3 3" stroke="var(--text-muted)" opacity={0.2} />
           <XAxis
