@@ -13,4 +13,3 @@ change profile to a protected route please
 
 SIMILAR ISSUE: (detect logged in user basically)
 when you go back from the profile, the profile should open again. not the sign up page 
-make the header clickable to go to home page

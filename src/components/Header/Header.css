@@ -36,4 +36,5 @@
     font-weight: bold;
     padding-left: 0.75em;
     color: var(--text);
+    cursor: pointer;
 }

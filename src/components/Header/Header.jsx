@@ -8,7 +8,7 @@ const Header = (props) => {
 
     return (
         <div className="flex-container">
-            <div className="logo">SHUTTLE UP</div>
+            <div className="logo" onClick={() => navigate("/")}>SHUTTLE UP</div>
             <div className="button-container">
                 <button onClick={() => theme === "light" ? toggleTheme("dark") : toggleTheme("light")} className="toggle-theme" aria-label="toggle-theme"><img src={themeIcon} alt="Theme toggle" /></button>
                 <button className="primary-btn" onClick={() => navigate("/login")}>LOGIN</button>
