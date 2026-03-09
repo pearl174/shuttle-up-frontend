@@ -7,3 +7,10 @@ The cats must be pleased and donated sacrifices to.
 profile page is not catching shit. for the fetchProfile function. 
 for profile pic, add randomizer to default profile pic. 
 
+graph should have months preferably. later on option to toggle between this month, year and total progress.
+
+change profile to a protected route please 
+
+SIMILAR ISSUE: (detect logged in user basically)
+when you go back from the profile, the profile should open again. not the sign up page 
+make the header clickable to go to home page
