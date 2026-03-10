@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext.jsx";
 
 const LoggedIn = () => {
     const navigate = useNavigate();
-    const { setUser } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
 
     const logOut = () => {
         setUser(null);
@@ -15,7 +15,7 @@ const LoggedIn = () => {
     return (
         <>
         <button className="primary-btn" onClick={() => logOut()}>LOGOUT</button>
-        <div className="profile-icon"><img src={userProfilePhoto} alt="User Profile Photo" /></div>
+        <div className="profile-icon" onClick={() => navigate(`/profile/${user}`)}><img src={userProfilePhoto} alt="User Profile Photo" /></div>
         </>
     )
 }
