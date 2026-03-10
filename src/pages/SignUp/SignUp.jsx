@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
-import API_BASE from "../../../config.js";
+import { API_BASE } from "../../../config.js";
 import { useEffect, useState } from "react";
 
 const SignUp = () => {
@@ -19,7 +19,8 @@ const SignUp = () => {
                 setServerMsg("");
                 setIsError(false);
             }, isError? 3000 : 2000);
-            return () => clearTimeout(timer);
+            return () => clearTimeout(timer); // cleanup function, runs when component unmounts
+            // or there is a dependency change, that is in serverMsg or isError.
         }
     }, [serverMsg, isError]);
 

@@ -13,3 +13,6 @@ change profile to a protected route please
 
 SIMILAR ISSUE: (detect logged in user basically)
 when you go back from the profile, the profile should open again. not the sign up page 
+
+have to adjust css for profile icon
+make profile clickable to route to profile page. 

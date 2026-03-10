@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Login.css";
-import API_BASE from "../../../config";
+import { API_BASE } from "../../../config";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
+    const {user, setUser} = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
@@ -25,7 +28,7 @@ const Login = () => {
             const timeout = setTimeout(() => {
                 setErrors({});
             }, 5000);
-            return () => clearTimeout(timeout);
+            return () => clearTimeout(timeout); 
         }
     }, [errors]);
 
@@ -55,6 +58,7 @@ const Login = () => {
             } else {
                 setIsError(false);
                 localStorage.setItem("token", data.token);
+                setUser(data.username);
                 navigate(`/profile/${data.username}`);
             }
         } catch (err) {

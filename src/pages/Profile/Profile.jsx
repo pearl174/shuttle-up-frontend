@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import API_BASE from "../../../config.js";
+import {API_BASE} from "../../../config.js";
 import "./Profile.css";
 import ProfilePic from "../../components/ProfilePic/ProfilePic.jsx";
 import ProgressGraph from "../../components/ProgressGraph/ProgressGraph.jsx";

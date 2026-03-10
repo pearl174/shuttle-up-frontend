@@ -1,3 +1,4 @@
 const API_BASE = "http://172.24.72.208:5000/"
+const userProfilePhoto = "../../../public/catprofile.png";
 
-export default API_BASE;
+export { API_BASE, userProfilePhoto };
