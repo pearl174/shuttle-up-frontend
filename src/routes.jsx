@@ -3,6 +3,7 @@ import LandingPage from "./pages/LandingPage/LandingPage"
 import SignUp from "./pages/SignUp/SignUp.jsx";
 import Login from "./pages/LogIn/LogIn.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
+import ButtonTray from "./pages/Profile/ButtonTray.jsx";
 
 const routes = [
     {

@@ -17,7 +17,7 @@
     align-items: center;
     row-gap: .5em;
     padding: 1em;
-    margin-left: 2em;
+    /* margin-left: 2em; */
     background-color: var(--bg-alt);
     border-radius: 1em;
 }
@@ -34,4 +34,12 @@
 
 .progress-graph-container {
     margin-right: 2em;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5em;
+    padding-left: 2em;
 }
