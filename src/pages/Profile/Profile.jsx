@@ -3,6 +3,8 @@ import {API_BASE} from "../../../config.js";
 import "./Profile.css";
 import ProfilePic from "../../components/ProfilePic/ProfilePic.jsx";
 import ProgressGraph from "../../components/ProgressGraph/ProgressGraph.jsx";
+import ButtonTray from "./ButtonTray.jsx";
+import "./ButtonTray.css";
 
 const Profile = () => {
     const { username } = useParams();
@@ -33,9 +35,10 @@ const Profile = () => {
                     <button className="primary-btn friends">Friends</button>
                     <button className="primary-btn friend-requests">Friend Requests</button>
                 </div>
-                <div className="metrics">
+                <ButtonTray />
+                {/* <div className="metrics">
                     Insert Metrics
-                </div>
+                </div> */}
             </div>
             <div className="right-side">
                 <div className="progress-graph-container"><ProgressGraph /></div>
