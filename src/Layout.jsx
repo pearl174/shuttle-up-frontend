@@ -5,7 +5,9 @@ import "./Layout.css";
 import AuthContext from './context/AuthContext.jsx';
 
 const Layout = () => {
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('theme') || 'light';
+    });
     const [user, setUser] = useState(() => {
         const stored = localStorage.getItem('username');
         return stored? stored : null;

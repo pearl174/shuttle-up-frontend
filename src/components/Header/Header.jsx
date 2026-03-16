@@ -11,11 +11,16 @@ const Header = (props) => {
     const { theme, toggleTheme } = props;
     const navigate = useNavigate();
 
+    const changeTheme = () => {
+        const newTheme = theme === "light"? "dark" : "light";
+        toggleTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
     return (
         <div className="flex-container">
             <div className="logo" onClick={() => navigate("/")}>SHUTTLE UP</div>
             <div className="button-container">
-                <button onClick={() => theme === "light" ? toggleTheme("dark") : toggleTheme("light")} className="toggle-theme" aria-label="toggle-theme"><img src={themeIcon} alt="Theme toggle" /></button>
+                <button onClick={() => changeTheme()} className="toggle-theme" aria-label="toggle-theme"><img src={themeIcon} alt="Theme toggle" /></button>
                 {user ? <LoggedIn setUser={setUser}/> : <LoggedOut />}
             </div>
         </div>
