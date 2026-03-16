@@ -10,6 +10,7 @@ const LoggedIn = () => {
 
     const logOut = () => {
         setUser(null);
+        localStorage.removeItem('user');
         navigate("/");
     }
     return (

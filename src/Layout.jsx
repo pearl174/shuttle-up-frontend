@@ -6,11 +6,14 @@ import AuthContext from './context/AuthContext.jsx';
 
 const Layout = () => {
     const [theme, setTheme] = useState("light");
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        const stored = localStorage.getItem('username');
+        return stored? stored : null;
+    });
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
     }, [theme]);
-
+    
     return (
         <>
             <div className="flex-container-layout">

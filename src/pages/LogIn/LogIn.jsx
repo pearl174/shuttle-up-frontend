@@ -6,7 +6,7 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
-    const {user, setUser} = useContext(AuthContext);
+    const {setUser} = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
@@ -58,6 +58,7 @@ const Login = () => {
             } else {
                 setIsError(false);
                 localStorage.setItem("token", data.token);
+                localStorage.setItem("username", data.username);
                 setUser(data.username);
                 navigate(`/profile/${data.username}`);
             }
