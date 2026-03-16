@@ -7,6 +7,7 @@ const ButtonTray = () => {
         <div className="button-tray-container">
             <button className="primary-btn action-button">Play a Match!</button>
             <button className="primary-btn action-button">Friends</button>
+            <button className="primary-btn action-button">Friends Requests</button>
             <button className="primary-btn action-button">View Past Matches</button>
         </div>
     )
