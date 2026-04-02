@@ -11,11 +11,12 @@
 import {
   LineChart,
   Line,
+  ResponsiveContainer,
   XAxis,
   YAxis,
-  Tooltip,
   CartesianGrid,
-  ResponsiveContainer,
+  Tooltip,
+  ReferenceLine
 } from "recharts";
 import "./ProgressGraph.css";
 
@@ -27,54 +28,57 @@ const matches = [
   { date: "2025-08-04", result: 1 },
   { date: "2025-08-05", result: 0 },
   { date: "2025-08-06", result: 1 },
+  { date: "2025-08-20", result: 1 },
+  { date: "2025-09-05", result: 0 },
+  { date: "2025-09-06", result: 1 },
+  { date: "2025-12-12", result: 1}
 ];
 
+let wins = 0;
 // Convert match history into winrate progression
 const winrateData = matches.map((m, idx) => {
   const total = idx + 1;
-  const wins = matches.slice(0, total).filter((x) => x.result === 1).length;
+  if (m.result === 1) wins += 1;
   return {
-    date: m.date,
-    winrate: Math.round((wins / total) * 100), // %
+    match: idx + 1,      
+    winrate: Math.round((wins / total) * 100),
   };
 });
-// console.log(winrateData);
+console.log(winrateData);
 
 const ProgressGraph = () => {
   return (
-    <div className="graph-container">
+    <div style={{ width: "100%", height: 300 }}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={winrateData}>
-          <CartesianGrid strokeDasharray="3 3" stroke="var(--text-muted)" opacity={0.2} />
           <XAxis
-            dataKey="date"
-            stroke="var(--text-muted)"
-            tickFormatter={(d) =>
-              new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric" })
-            }
+            dataKey="match"
+            axisLine={{ stroke: "var(--text-muted)" }}
+            tickLine={false}
+            label={{ value: "Past Ten Matches", position: "insideBottom", offset: -5 }}
           />
           <YAxis
             domain={[0, 100]}
-            stroke="var(--text-muted)"
+            axisLine={{ stroke: "var(--text-muted)" }}
+            tickLine={false}
             tickFormatter={(v) => `${v}%`}
           />
-          <Tooltip
-            formatter={(v) => `${v}%`}
-            labelFormatter={(label) => `Date: ${label}`}
-          />
-          <Line
+          <CartesianGrid strokeDasharray="3 3" /> {/*3px drawn, 3px dash*/}
+          <Tooltip formatter={(v) => `${v}%`}
+            labelFormatter={(label) => `Match ${label} · ${new Date(matches[label - 1].date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}`} />
+          <Line 
             type="monotone"
             dataKey="winrate"
-            name="Winrate"
-            stroke="var(--secondary)"
+            stroke="#3b7dd8"
             strokeWidth={2}
             dot={{ r: 4 }}
-            activeDot={{ r: 6 }}
+            activeDot={{ r: 6}}
           />
+          <ReferenceLine y={50} strokeDasharray="4 4" stroke="#888" />
         </LineChart>
       </ResponsiveContainer>
     </div>
-  );
-};
+  )
+}
 
 export default ProgressGraph;
