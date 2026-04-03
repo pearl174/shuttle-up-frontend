@@ -63,18 +63,22 @@ const ProgressGraph = () => {
             tickLine={false}
             tickFormatter={(v) => `${v}%`}
           />
-          <CartesianGrid strokeDasharray="3 3" /> {/*3px drawn, 3px dash*/}
-          <Tooltip formatter={(v) => `${v}%`}
-            labelFormatter={(label) => `Match ${label} · ${new Date(matches[label - 1].date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}`} />
+          <CartesianGrid strokeDasharray="1 1" />
+          <Tooltip
+            formatter={(v) => [`${v}%`, "Win Rate"]}
+            labelFormatter={(label) => `Match ${label} · ${new Date(matches[label - 1].date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}`}
+            contentStyle={{ backgroundColor: "var(--bg-alt)", border: "1px solid var(--border)", borderRadius: "8px", color: "var(--text)" }}
+            labelStyle={{ color: "var(--text-muted)", marginBottom: "4px" }}
+            itemStyle={{ color: "var(--secondary)" }}
+          />
           <Line 
             type="monotone"
             dataKey="winrate"
-            stroke="#3b7dd8"
+            stroke="var(--secondary)"
             strokeWidth={2}
             dot={{ r: 4 }}
             activeDot={{ r: 6}}
           />
-          <ReferenceLine y={50} strokeDasharray="4 4" stroke="#888" />
         </LineChart>
       </ResponsiveContainer>
     </div>
