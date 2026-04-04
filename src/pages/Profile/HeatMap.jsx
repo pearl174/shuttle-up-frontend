@@ -1,3 +1,4 @@
+import "./HeatMap.css";
 // data might be of this sort 
 // const rawData = [
 //   { date: "2025-01-04T00:00:00.000Z", count: 2 },
@@ -85,7 +86,16 @@ const fullMonthData = separateMonths(fullYearData);
 
 const HeatMap = () => {
     return <>
-    hello world</>
+        <div className="heatmap-container">
+            {fullMonthData.map((monthObj, idx) => (
+                <div key={idx} className="heatmap-month">
+                    {Object.entries(monthObj).map(([date, count]) => (
+                        <div key={date} className="heatmap-day">{}</div>
+                    ))}
+                </div>
+            ))}
+        </div>
+    </>
 }
 
 export default HeatMap;
