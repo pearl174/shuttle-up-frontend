@@ -22,3 +22,7 @@
     background-color: var(--primary);
     border-radius: 0.2em;
 }
+
+.heatmap-day:hover {
+    cursor: pointer;
+}

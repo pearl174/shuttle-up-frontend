@@ -90,7 +90,12 @@ const HeatMap = () => {
             {fullMonthData.map((monthObj, idx) => (
                 <div key={idx} className="heatmap-month">
                     {Object.entries(monthObj).map(([date, count]) => (
-                        <div key={date} className="heatmap-day">{}</div>
+                        <div 
+                            key={date} 
+                            className="heatmap-day"
+                            style={{ opacity: count === 0 ? 0.1 : Math.min(0.2 + count * 0.2, 1)}}
+                            title={`${date} · ${count} matches`}
+                        />
                     ))}
                 </div>
             ))}
