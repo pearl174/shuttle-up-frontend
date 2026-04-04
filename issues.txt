@@ -12,3 +12,5 @@ SIMILAR ISSUE: (detect logged in user basically)
 when you go back from the profile, the profile should open again. not the sign up page 
 
 the local storage should time out at some point, cause the user stays logged in
+
+heatmap is v1. aspect ratio gap issue. look at leetcode fixes.

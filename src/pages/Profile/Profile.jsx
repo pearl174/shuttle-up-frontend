@@ -4,7 +4,7 @@ import "./Profile.css";
 import ProfilePic from "./ProfilePic.jsx";
 import ProgressGraph from "./ProgressGraph.jsx";
 import ButtonTray from "./ButtonTray.jsx";
-import "./ButtonTray.css";
+import HeatMap from "./HeatMap.jsx";
 
 const Profile = () => {
     const { username } = useParams();
@@ -42,7 +42,7 @@ const Profile = () => {
             </div>
             <div className="right-side">
                 <div className="progress-graph-container"><ProgressGraph /></div>
-                <div className="heatmap"></div>
+                <HeatMap />
             </div>
         </div>
     )

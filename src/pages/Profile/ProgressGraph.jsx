@@ -69,12 +69,12 @@ const ProgressGraph = () => {
             labelFormatter={(label) => `Match ${label} · ${new Date(matches[label - 1].date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}`}
             contentStyle={{ backgroundColor: "var(--bg-alt)", border: "1px solid var(--border)", borderRadius: "8px", color: "var(--text)" }}
             labelStyle={{ color: "var(--text-muted)", marginBottom: "4px" }}
-            itemStyle={{ color: "var(--secondary)" }}
+            itemStyle={{ color: "var(--primary)" }}
           />
           <Line 
             type="monotone"
             dataKey="winrate"
-            stroke="var(--secondary)"
+            stroke="var(--primary)"
             strokeWidth={2}
             dot={{ r: 4 }}
             activeDot={{ r: 6}}
