@@ -56,8 +56,32 @@ const zeroPadding = (matchData) => {
     }
     return fullYearData;
 }
+
+const separateMonths = (fullYearData) => {
+    let i = 0;
+    const keys = Object.keys(fullYearData);
+    const len = keys.length;
+    const sepMonthData = [];
+    while (i < len) {
+        const monthData = {};
+        let currMonth = new Date(keys.at(i)).getMonth();
+        let key = keys.at(i);
+        let date = new Date(key);
+        while (i < len && date.getMonth() === currMonth) {
+            monthData[key] = fullYearData[key];
+            i++;
+            key = keys.at(i);
+            date = new Date(key);
+        }
+        sepMonthData.push(monthData);
+    }
+    console.log(sepMonthData);
+    return sepMonthData;
+}
+
 const fullYearData = zeroPadding(matchData);
-console.log(fullYearData);
+// console.log(fullYearData);
+const fullMonthData = separateMonths(fullYearData);
 
 const HeatMap = () => {
     return <>
