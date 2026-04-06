@@ -1,13 +1,3 @@
-// LineChart → container for a line chart.
-
-// Line → the actual line that connects your data points.
-
-// XAxis / YAxis → axes.
-
-// Tooltip → hover info.
-
-// ResponsiveContainer → auto-fits chart to parent div (so it scales nicely).
-
 import {
   LineChart,
   Line,
@@ -16,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ReferenceLine
 } from "recharts";
 import "./ProgressGraph.css";
 
@@ -48,7 +37,7 @@ console.log(winrateData);
 
 const ProgressGraph = () => {
   return (
-    <div style={{ width: "100%", height: 300 }}>
+    <div className="graph-container" style={{ width: "100%", height: 300 }}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={winrateData}>
           <XAxis

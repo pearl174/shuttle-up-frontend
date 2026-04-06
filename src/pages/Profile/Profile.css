@@ -33,7 +33,11 @@
 }
 
 .progress-graph-container {
-    margin-right: 2em;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--bg-alt);
+    border-radius: 1em;
+    padding: 1em;
 }
 
 .left-side {
@@ -42,4 +46,11 @@
     justify-content: center;
     gap: 0.5em;
     padding-left: 2em;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    min-width: 0; 
 }
