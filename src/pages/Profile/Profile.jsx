@@ -42,7 +42,9 @@ const Profile = () => {
             </div>
             <div className="right-side">
                 <div className="progress-graph-container"><ProgressGraph /></div>
-                <HeatMap />
+                <div className="heatmap-padding-box">
+                    <div className="progress-heatmap-container"><HeatMap /></div>
+                </div>
             </div>
         </div>
     )

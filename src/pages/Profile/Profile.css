@@ -40,6 +40,19 @@
     padding: 1em;
 }
 
+.heatmap-padding-box {
+    flex: 1;
+    padding: 1em;
+    background-color: var(--bg-alt);
+    border-radius: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+.progress-heatmap-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
 .left-side {
     display: flex;
     flex-direction: column;
