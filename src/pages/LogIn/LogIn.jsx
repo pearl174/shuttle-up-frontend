@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
     const {setUser} = useContext(AuthContext);
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const [serverMsg, setServerMsg] = useState("");
@@ -39,7 +39,7 @@ const Login = () => {
             const res = await fetch(`${API_BASE}api/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ username, password })
             });
             const data = await res.json();
             setServerMsg(data.msg);
@@ -58,9 +58,9 @@ const Login = () => {
             } else {
                 setIsError(false);
                 localStorage.setItem("token", data.token);
-                localStorage.setItem("username", data.username);
-                setUser(data.username);
-                navigate(`/profile/${data.username}`);
+                localStorage.setItem("username", username);
+                setUser(username);
+                navigate(`/profile/${username}`);
             }
         } catch (err) {
             console.error(err);
@@ -70,15 +70,15 @@ const Login = () => {
     return (
         <div className="flex-container-signup">
             <form className="signup-form" method="POST" onSubmit={handleLogin}>
-                <label htmlFor="email">Email</label>
-                {errors && <div className="email-error invalid">{errors.email}</div>}
+                <label htmlFor="username">Username</label>
+                {errors && <div className="username-error invalid">{errors.username}</div>}
                 <input 
-                    type="email" 
-                    id="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type="text" 
+                    id="username" 
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     required 
-                    placeholder="johndoe@gmail.com" />
+                    placeholder="johndoe" />
                 
                 <label htmlFor="password">Password</label>
                 {errors && <div className="password-error invalid">{errors.password}</div>}
