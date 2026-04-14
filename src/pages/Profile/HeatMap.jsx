@@ -44,7 +44,7 @@ import "./HeatMap.css";
 //   "2025-12-21": 1,
 // };
 
-const HeatMap = ({activityLogs}) => {
+const HeatMap = ({activityLogs = []}) => {
     const matchData = {}
     const convertData = (rawData) => {
         for (const log of rawData) {
