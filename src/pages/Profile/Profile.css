@@ -1,9 +1,8 @@
 .profile-grid-container {
     width: 100%;
-    padding: 1em;
+    padding: 2em;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 2fr 1fr 2fr;
     background-color: var(--bg);
     color: var(--text);
     gap: 2em;
@@ -33,8 +32,9 @@
 }
 
 .progress-graph-container {
+    flex: 1;
+    flex-grow: 0;
     box-sizing: border-box;
-    width: 100%;
     background-color: var(--bg-alt);
     border-radius: 1em;
     padding: 1em;
@@ -42,14 +42,13 @@
 
 .heatmap-padding-box {
     flex: 1;
+    flex-grow: 0;
     padding: 1em;
     background-color: var(--bg-alt);
     border-radius: 1em;
-    width: 100%;
     box-sizing: border-box;
 }
 .progress-heatmap-container {
-    width: 100%;
     overflow-x: auto;
 }
 
@@ -58,7 +57,6 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.5em;
-    padding-left: 2em;
 }
 
 .right-side {
