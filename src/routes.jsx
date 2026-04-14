@@ -3,6 +3,7 @@ import LandingPage from "./pages/LandingPage/LandingPage"
 import SignUp from "./pages/SignUp/SignUp.jsx";
 import Login from "./pages/LogIn/LogIn.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
+import PlayMatch from "./pages/PlayMatch/PlayMatch.jsx";
 
 const routes = [
     {
@@ -24,6 +25,10 @@ const routes = [
             {
                 path: "/profile/:username",
                 element: <Profile />
+            },
+            {
+                path: "/playMatch",
+                element: <PlayMatch />
             }
         ]
     }
