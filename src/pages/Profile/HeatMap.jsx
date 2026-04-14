@@ -9,82 +9,102 @@ import "./HeatMap.css";
 //   { date: "2025-12-20T00:00:00.000Z", count: 3 },
 // ];
 // convert it to below format
-const matchData = {
-  "2025-01-04": 2,
-  "2025-01-05": 1,
-  "2025-01-11": 3,
-  "2025-01-19": 1,
-  "2025-02-02": 2,
-  "2025-02-14": 1,
-  "2025-02-15": 2,
-  "2025-03-01": 1,
-  "2025-03-08": 3,
-  "2025-03-22": 2,
-  "2025-04-05": 1,
-  "2025-04-06": 2,
-  "2025-04-20": 3,
-  "2025-05-03": 1,
-  "2025-05-17": 2,
-  "2025-05-18": 1,
-  "2025-06-07": 3,
-  "2025-06-21": 2,
-  "2025-07-04": 1,
-  "2025-07-05": 3,
-  "2025-08-09": 2,
-  "2025-08-23": 1,
-  "2025-09-06": 3,
-  "2025-09-07": 2,
-  "2025-10-11": 1,
-  "2025-10-25": 2,
-  "2025-11-01": 3,
-  "2025-11-02": 1,
-  "2025-12-06": 2,
-  "2025-12-20": 3,
-  "2025-12-21": 1,
-};
 
-const zeroPadding = (matchData) => {
-    const fullYearData = {};
-    const lastKey = Object.keys(matchData).at(-1);
-    let currDate = new Date(lastKey);
-    const endDate = new Date(lastKey);
-    currDate.setFullYear(currDate.getFullYear() - 1);
-    while (currDate <= endDate) {
-        const key = currDate.toISOString().slice(0, 10)
-        if (key in matchData) fullYearData[key] = matchData[key];
-        else fullYearData[key] = 0;
-        currDate.setDate(currDate.getDate() + 1);
-    }
-    return fullYearData;
-}
+// const matchData = {
+//   "2025-01-04": 2,
+//   "2025-01-05": 1,
+//   "2025-01-11": 3,
+//   "2025-01-19": 1,
+//   "2025-02-02": 2,
+//   "2025-02-14": 1,
+//   "2025-02-15": 2,
+//   "2025-03-01": 1,
+//   "2025-03-08": 3,
+//   "2025-03-22": 2,
+//   "2025-04-05": 1,
+//   "2025-04-06": 2,
+//   "2025-04-20": 3,
+//   "2025-05-03": 1,
+//   "2025-05-17": 2,
+//   "2025-05-18": 1,
+//   "2025-06-07": 3,
+//   "2025-06-21": 2,
+//   "2025-07-04": 1,
+//   "2025-07-05": 3,
+//   "2025-08-09": 2,
+//   "2025-08-23": 1,
+//   "2025-09-06": 3,
+//   "2025-09-07": 2,
+//   "2025-10-11": 1,
+//   "2025-10-25": 2,
+//   "2025-11-01": 3,
+//   "2025-11-02": 1,
+//   "2025-12-06": 2,
+//   "2025-12-20": 3,
+//   "2025-12-21": 1,
+// };
 
-const separateMonths = (fullYearData) => {
-    let i = 0;
-    const keys = Object.keys(fullYearData);
-    const len = keys.length;
-    const sepMonthData = [];
-    while (i < len) {
-        const monthData = {};
-        let currMonth = new Date(keys.at(i)).getMonth();
-        let key = keys.at(i);
-        let date = new Date(key);
-        while (i < len && date.getMonth() === currMonth) {
-            monthData[key] = fullYearData[key];
-            i++;
-            key = keys.at(i);
-            date = new Date(key);
+const HeatMap = ({activityLogs}) => {
+    const matchData = {}
+    const convertData = (rawData) => {
+        for (const log of rawData) {
+            const date = log.date.slice(0, 10);
+            matchData[date] = log.count;
         }
-        sepMonthData.push(monthData);
     }
-    console.log(sepMonthData);
-    return sepMonthData;
-}
+    convertData(activityLogs);
+    const zeroPadding = (matchData) => {
+        const fullYearData = {};
+        let lastKey = "";
+        if (Object.keys(matchData).length === 0) {
+            lastKey = new Date().toISOString().slice(0, 10);
+        } else {
+            lastKey = Object.keys(matchData).at(-1);
+        }
 
-const fullYearData = zeroPadding(matchData);
-// console.log(fullYearData);
-const fullMonthData = separateMonths(fullYearData);
+        let currDate = new Date(lastKey);
+        const endDate = new Date(lastKey);
+        currDate.setFullYear(currDate.getFullYear() - 1);
+        while (currDate <= endDate) {
+            const key = currDate.toISOString().slice(0, 10)
+            if (key in matchData) fullYearData[key] = matchData[key];
+            else fullYearData[key] = 0;
+            currDate.setDate(currDate.getDate() + 1);
+        }
+        return fullYearData;
+    }
 
-const HeatMap = () => {
+    const separateMonths = (fullYearData) => {
+        let i = 0;
+        const keys = Object.keys(fullYearData);
+        const len = keys.length;
+        const sepMonthData = [];
+        while (i < len) {
+            const monthData = {};
+            let currMonth = new Date(keys.at(i)).getMonth();
+            let key = keys.at(i);
+            let date = new Date(key);
+            let day = date.getDay();
+            let startDay = 0;
+            while (startDay != day) {
+                monthData[startDay] = -1;
+                startDay++;
+            }
+            while (i < len && date.getMonth() === currMonth) {
+                monthData[key] = fullYearData[key];
+                i++;
+                key = keys.at(i);
+                date = new Date(key);
+            }
+            sepMonthData.push(monthData);
+        }
+        console.log(sepMonthData);
+        return sepMonthData;
+    }
+    const fullYearData = zeroPadding(matchData);
+    // console.log(fullYearData);
+    const fullMonthData = separateMonths(fullYearData);
+    console.log(fullMonthData);
     return <>
         <div className="heatmap-container">
             {fullMonthData.map((monthObj, idx) => (
@@ -93,8 +113,8 @@ const HeatMap = () => {
                         <div 
                             key={date} 
                             className="heatmap-day"
-                            style={{ opacity: count === 0 ? 0.1 : Math.min(0.2 + count * 0.2, 1)}}
-                            title={`${date} · ${count} matches`}
+                            style={{ opacity: Math.min(0.2 + count * 0.2, 1)}}
+                            title={count === -1? "" : `${date} · ${count} matches`}
                         />
                     ))}
                 </div>

@@ -14,3 +14,10 @@ when you go back from the profile, the profile should open again. not the sign u
 the local storage should time out at some point, cause the user stays logged in
 
 heatmap is v1. aspect ratio gap issue. look at leetcode fixes.
+
+add streak somewhere. are we adding other stats too? 
+
+routing to protected routes figure out. rn its a generic error on going to profile page without token
+but want smth else
+
+is there a better way to error handle? cat memes for errors maybe 
