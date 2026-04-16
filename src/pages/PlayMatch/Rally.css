@@ -1,0 +1,14 @@
+.rally {
+  width: 894px;
+  height: 600px;
+  background-image: url('../../assets/rally_spritesheet_smol.png');
+  background-repeat: no-repeat;
+  animation: rally 0.6s steps(6) infinite;
+  /* border: 1px solid black; */
+  transform: scale(0.9);
+}
+
+@keyframes rally {
+  from { background-position: 0 0; }
+  to   { background-position: -5364px 0; } /* 894 * 6 */
+}
