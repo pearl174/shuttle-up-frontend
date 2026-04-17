@@ -1,9 +1,8 @@
-/* * {
-  padding: 0px;
-  margin: 0px;
-} */
+* {
+  box-sizing: border-box;
+}
 
-body, button, input, select {
+body, button, input, select, li {
   font-family: sans-serif;
 }
 

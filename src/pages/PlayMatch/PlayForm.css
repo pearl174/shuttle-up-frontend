@@ -1,0 +1,67 @@
+.active.primary-btn {
+    background: #3730a3;
+}
+
+.flex-container-playform {
+    display: flex;
+    flex-direction: column;
+    max-width: 20em;
+    width: 60%;
+    color: var(--text);
+    background-color: var(--bg-alt);
+    border-radius: 6px;
+    padding: 3em 2em;
+    margin-top: 4em;
+}
+
+.buttons-playmatch {
+    display: flex;
+    gap: 0.5em;
+}
+
+.buttons-playmatch > button {
+    flex: 1;
+    margin-bottom: 3em;
+}
+
+.start-match-button {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.suggestions-wrapper {
+    position: relative;
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin: 0;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#player-2 {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+li {
+    padding: 0.5em;
+    border: 1px solid var(--bg-alt);
+    border-radius: 6px;
+    background-color: var(--bg);
+    font-size: 0.8em;
+}
+
+li:hover {
+    background-color: var(--bg-alt);
+    border: 1px solid var(--bg);
+}
+
+.start-match-button {
+    margin-top: 3em;
+}
