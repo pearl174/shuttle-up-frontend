@@ -1,0 +1,6 @@
+.flex-container-playmatch {
+    display: flex;
+    background-color: var(--bg);
+    width: 100%;
+    justify-content: center;
+}
