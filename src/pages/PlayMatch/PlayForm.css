@@ -44,9 +44,13 @@
     padding-left: 0;
 }
 
-#player-2 {
+#player-2, #player-4 {
     width: 100%;
     margin-bottom: 0;
+}
+
+#player-3 {
+    width: 100%;
 }
 
 li {
@@ -64,4 +68,18 @@ li:hover {
 
 .start-match-button {
     margin-top: 3em;
+}
+
+.team-label {
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+.team-2 {
+    margin-top: 1.5em;
+}
+
+form {
+    max-height: 550px;
+    box-sizing: border-box;
 }

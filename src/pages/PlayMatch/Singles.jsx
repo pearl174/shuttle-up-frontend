@@ -44,6 +44,7 @@ export default function Singles() {
             <label htmlFor="player-2">Player 2</label>
             <div className="suggestions-wrapper">
                 <input 
+                    autoComplete="off"
                     type="text" 
                     id="player-2"
                     value={player2}

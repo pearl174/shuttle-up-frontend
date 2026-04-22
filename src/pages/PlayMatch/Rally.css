@@ -1,6 +1,6 @@
 .rally {
   width: 894px;
-  height: 550px;
+  height: 570px;
   background-image: url('../../assets/rally_spritesheet_smol.png');
   background-repeat: no-repeat;
   animation: rally 0.6s steps(6) infinite;
