@@ -1,0 +1,27 @@
+.buttons-friends {
+    display: flex;
+    gap: 0.5em;
+    width: fit-content;
+}
+
+.buttons-friends > button {
+    flex: 1;
+}
+
+.active.primary-btn {
+    background: #3730a3;
+}
+
+.friends-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 2em 2em;
+}
+
+.friend-list {
+    margin: 0;
+    list-style-type: none;
+}

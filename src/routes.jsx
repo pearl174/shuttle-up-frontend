@@ -4,6 +4,7 @@ import SignUp from "./pages/SignUp/SignUp.jsx";
 import Login from "./pages/LogIn/LogIn.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
 import PlayMatch from "./pages/PlayMatch/PlayMatch.jsx";
+import Friends from "./pages/FriendsPage/Friends.jsx";
 
 const routes = [
     {
@@ -29,6 +30,10 @@ const routes = [
             {
                 path: "/playMatch",
                 element: <PlayMatch />
+            },
+            {
+                path: "/friends/:username",
+                element: <Friends />
             }
         ]
     }
