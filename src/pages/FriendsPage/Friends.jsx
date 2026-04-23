@@ -15,7 +15,9 @@ export default function Friends() {
                     View Friends
                 </button>
             </div>
-            {mode === "friends"? <FriendList />:<FriendRequests />}
+            <div className="friends-list-container">
+                {mode === "friends"? <FriendList />:<FriendRequests />}
+            </div>
         </div>
     )
 }

@@ -2,6 +2,7 @@
     display: flex;
     gap: 0.5em;
     width: fit-content;
+    margin-bottom: 2em;
 }
 
 .buttons-friends > button {
@@ -23,5 +24,16 @@
 
 .friend-list {
     margin: 0;
+    padding: 0;
     list-style-type: none;
+}
+
+.friend {
+    display: flex;
+    justify-content: space-between;
+}
+
+.friends-list-container {
+    width: fit-content;
+    min-width: 30%;
 }
