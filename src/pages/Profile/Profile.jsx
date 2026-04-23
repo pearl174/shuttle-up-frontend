@@ -58,8 +58,8 @@ const Profile = () => {
                 <div className="profilepic-bio-container">
                     <ProfilePic />
                     <div className="bio-text">If you're gonna hit it, hit it until it breaks!</div>
-                    <button className="primary-btn friends">Friends</button>
-                    <button className="primary-btn friend-requests">Friend Requests</button>
+                    {/* <button className="primary-btn friends">Friends</button>
+                    <button className="primary-btn friend-requests">Friend Requests</button> */}
                 </div>
                 <ButtonTray />
                 {/* <div className="metrics">
