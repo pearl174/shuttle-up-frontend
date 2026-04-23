@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { API_BASE } from "../../../config.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Singles() {
+    const navigate = useNavigate();
     const [player1, setPlayer1] = useState(localStorage.getItem("username"));
     const [player2, setPlayer2] = useState("");
     const [friends, setFriends] = useState(['john', 'amy', 'hardin']);
@@ -10,26 +13,39 @@ export default function Singles() {
         setShowSuggestions(false);
     }
     const suggestions = player2.trim() === ""? [] : friends.filter(f => f.toLowerCase().includes(player2.toLowerCase()));
-    // useEffect(() => {
-    //     const fetchFriends = async() => {
-    //         const res = await fetch(`${API_BASE}api/friends/${player1}`, {
-    //             method: "GET",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Authorization": `Bearer ${token}`
-    //             }
-    //         });
-    //         const data = res.json();
-    //         const friends = data.friends;
-    //         if (res.status === 400) {
-    //             console.log("something went wrong huhu");
-    //             return 
-    //         }
-    //     }
-    //     fetchFriends().catch((err) => {
-    //         console.error(err);
-    //     });
-    // }, []);
+    useEffect(() => {
+        const fetchFriends = async() => {
+            const res = await fetch(`${API_BASE}api/friends/${player1}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            });
+            const data = await res.json();
+            if (res.status === 401) {
+                alert("Something went wrong. Please login again.");
+                localStorage.removeItem("token");
+                navigate("/login");
+            } else if (res.status === 500) {
+                alert("Something went wrong");
+                navigate(`/profile/${player1}`);
+            } else if (res.status === 200) {
+                if (data.friends.length === 0) {
+                    alert(":(. You have no friends. Go make some!");
+                    navigate(`/friends/${player1}`);
+                }
+                setFriends(data.friends);
+                console.log("Here are your friends :D.");
+            } else {
+                console.log("lol idk what's happening");
+                navigate(`/profile/${player1}`);
+            }
+        }
+        fetchFriends().catch((err) => {
+            console.error(err);
+        });
+    }, []);
     
     return (
         <>
