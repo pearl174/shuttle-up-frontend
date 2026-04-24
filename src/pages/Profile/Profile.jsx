@@ -56,7 +56,7 @@ const Profile = () => {
         <div className="profile-grid-container">
             <div className="left-side">
                 <div className="profilepic-bio-container">
-                    <ProfilePic />
+                    <ProfilePic profilePicPath={profileData?.profilePicPath} />
                     <div className="bio-text">If you're gonna hit it, hit it until it breaks!</div>
                     {/* <button className="primary-btn friends">Friends</button>
                     <button className="primary-btn friend-requests">Friend Requests</button> */}

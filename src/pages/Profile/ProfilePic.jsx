@@ -1,7 +1,7 @@
 import "./ProfilePic.css";
-const ProfilePic = () => {
+const ProfilePic = (profilePicPath) => {
     return (
-        <div className="profile-container"><img src="/catprofile.png" alt="Shuttle image?" /></div>
+        <div className="profile-container"><img src={profilePicPath} alt="profile-pic" /></div>
     )
 }
 
