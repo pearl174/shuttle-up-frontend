@@ -11,8 +11,11 @@ export default function Friends() {
                 <button type="button" onClick={() => setMode("friends")} className={mode === "friends"? "active friends primary-btn":"friends primary-btn"}>
                     Friends
                 </button>
-                <button type="button" onClick={()=> setMode("view-friends")} className={mode === "view-friends"? "active view-friends primary-btn": "view-friends primary-btn"}>
-                    View Friends
+                <button type="button" onClick={()=> setMode("friend-requests")} className={mode === "friend-requests"? "active friend-requests primary-btn": "friend-requests primary-btn"}>
+                    Friend Requests
+                </button>
+                <button type="button" onClick={() => setMode("add-friends")} className={mode === "add-friends"? "active add-friends primary-btn":"add-friends primary-btn"}>
+                    Add Friends
                 </button>
             </div>
             <div className="friends-list-container">
