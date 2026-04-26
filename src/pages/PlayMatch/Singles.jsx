@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { API_BASE } from "../../../config.js";
 import { useNavigate } from "react-router-dom";
+import { getFriends } from "../../api/friends.js";
 
 export default function Singles() {
     const navigate = useNavigate();
@@ -15,14 +15,7 @@ export default function Singles() {
     const suggestions = player2.trim() === ""? [] : friends.filter(f => f.toLowerCase().includes(player2.toLowerCase()));
     useEffect(() => {
         const fetchFriends = async() => {
-            const res = await fetch(`${API_BASE}api/friends/${player1}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem("token")}`
-                }
-            });
-            const data = await res.json();
+            const {res, data} = await getFriends(player1);
             if (res.status === 401) {
                 alert("Something went wrong. Please login again.");
                 localStorage.removeItem("token");
