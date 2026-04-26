@@ -47,4 +47,4 @@ const deleteFriendRequest = async(username) => {
     const data = res.json();
     return {res, data};
 }
-export { getFriends };
+export { getFriends, deleteFriend, getFriendRequests, deleteFriendRequest };

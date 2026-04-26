@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getFriends } from "../../api/friends";
+import { getFriends, deleteFriend } from "../../api/friends";
 import { useParams } from "react-router-dom";
 
 export default function FriendList() {
@@ -30,6 +30,20 @@ export default function FriendList() {
         });
     }, []);
 
+    const handleRemove = async (friend) => {
+        const {res, data} = await deleteFriend(friend);
+        if (res.status === 401) {
+            alert("Something went wrong. Please login again.");
+            localStorage.removeItem("token");
+            navigate("/login");
+        } else if (res.status === 500) {
+            alert("Something went wrong");
+        } else if (res.status === 200) {
+            setFriends(friends.filter(frnd => frnd != friend));
+        } else {
+            console.log("Something unexpected happened");
+        }
+    }
     return (
         <>
             <input type="text" 
@@ -44,7 +58,7 @@ export default function FriendList() {
                     <div className="friend-actions">
                         <button className="primary-btn">Play</button>
                         <button className="primary-btn">View</button>
-                        <button className="primary-btn">Remove</button>
+                        <button className="primary-btn" onClick={() => handleRemove(friend)}>Remove</button>
                     </div>
                     </li>
                 ))}
