@@ -18,7 +18,7 @@ heatmap is v1. aspect ratio gap issue. look at leetcode fixes.
 add streak somewhere. are we adding other stats too? 
 
 routing to protected routes figure out. rn its a generic error on going to profile page without token
-but want smth else
+but want smth else AND its not really protected rn. idk i think we are still allowing pple to visit protected routes. theres just an error rn. 
 
 is there a better way to error handle? cat memes for errors maybe 
 

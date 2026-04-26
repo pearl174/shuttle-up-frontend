@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Friends.css";
 import FriendList from "./FriendList";
 import FriendRequests from "./FriendRequests";
+import AddFriends from "./AddFriends";
 
 export default function Friends() {
     const [mode, setMode] = useState("friends");
@@ -19,7 +20,9 @@ export default function Friends() {
                 </button>
             </div>
             <div className="friends-list-container">
-                {mode === "friends"? <FriendList />:<FriendRequests />}
+                {mode === "friends"? <FriendList />
+                :mode ==="friend-requests"? <FriendRequests />
+                :<AddFriends />}
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ export default function FriendList() {
     const [friends, setFriends] = useState(['john', 'amy', 'hardin']);
     const [searchTerm, setSearchTerm] = useState("");
 
+    
     return (
         <>
             <input type="text" 
