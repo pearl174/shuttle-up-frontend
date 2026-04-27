@@ -3,7 +3,7 @@ import { getFriends, deleteFriend } from "../../api/friends";
 import { useParams } from "react-router-dom";
 
 export default function FriendList() {
-    const [friends, setFriends] = useState(['john', 'amy', 'hardin']);
+    const [friends, setFriends] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const params = useParams();
 
@@ -39,7 +39,7 @@ export default function FriendList() {
         } else if (res.status === 500) {
             alert("Something went wrong");
         } else if (res.status === 200) {
-            setFriends(friends.filter(frnd => frnd != friend));
+            setFriends(friends.filter(frnd => frnd.user.username != friend));
         } else {
             console.log("Something unexpected happened");
         }
@@ -53,8 +53,8 @@ export default function FriendList() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     />
             <ul className="friend-list">
-                {friends.filter((friend) => friend.includes(searchTerm)).map(friend => (
-                    <li className="friend" key={friend}>{friend} 
+                {friends.filter((friend) => friend.user.username.includes(searchTerm)).map(friend => (
+                    <li className="friend" key={friend.user.username}>{friend.user.username} 
                     <div className="friend-actions">
                         <button className="primary-btn">Play</button>
                         <button className="primary-btn">View</button>
