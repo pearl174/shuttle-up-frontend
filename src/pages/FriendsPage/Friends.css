@@ -28,7 +28,7 @@
     list-style-type: none;
 }
 
-.friend {
+.friend, .friend-request {
     display: flex;
     justify-content: space-between;
     align-items: center;
