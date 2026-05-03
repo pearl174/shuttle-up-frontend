@@ -12,6 +12,9 @@ const Layout = () => {
         const stored = localStorage.getItem('username');
         return stored? stored : null;
     });
+    const [profilePicPath, setProfilePicPath] = useState(() => {
+        return localStorage.getItem("profilePicPath");
+    });
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
     }, [theme]);
@@ -19,7 +22,7 @@ const Layout = () => {
     return (
         <>
             <div className="flex-container-layout">
-                <AuthContext value={{ user, setUser }} >
+                <AuthContext value={{ user, setUser, profilePicPath, setProfilePicPath }} >
                     <Header theme={theme} toggleTheme={setTheme} />
                     <div className="page-content">
                         <Outlet />

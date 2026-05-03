@@ -5,12 +5,14 @@ import ProfilePic from "./ProfilePic.jsx";
 import ProgressGraph from "./ProgressGraph.jsx";
 import ButtonTray from "./ButtonTray.jsx";
 import HeatMap from "./HeatMap.jsx";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "../../context/AuthContext.jsx";
 
 const Profile = () => {
     const navigate = useNavigate();
     const { username } = useParams();
     const [profileData, setProfileData] = useState(null);
+    const { setProfilePicPath } = useContext(AuthContext);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -25,7 +27,7 @@ const Profile = () => {
             });
             const data = await res.json();
             const profile = data.data;
-            // console.log(data);
+            console.log(profile);
             if (res.status === 401) {
                 alert("Something went wrong. Please login again.");
                 localStorage.removeItem("token");
@@ -40,6 +42,8 @@ const Profile = () => {
             } else if (res.status === 200) {
                 console.log("You are logged in :D.");
                 setProfileData(profile);
+                localStorage.setItem("profilePicPath", profile?.profilePicPath)
+                setProfilePicPath(profile?.profilePicPath);
             } else {
                 console.log("I don't understand what has gone wrong!");
                 navigate("/");

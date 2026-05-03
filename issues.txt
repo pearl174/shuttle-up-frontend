@@ -24,3 +24,5 @@ is there a better way to error handle? cat memes for errors maybe
 
 
 join invites for play match. dont want unconsensual badminton
+
+why does the graph kkeep printing its stuff?

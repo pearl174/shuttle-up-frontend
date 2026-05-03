@@ -8,7 +8,7 @@ import AuthContext from "../../context/AuthContext";
 
 const Header = (props) => {
     const { user, setUser } = useContext(AuthContext);
-    const { theme, toggleTheme } = props;
+    const { theme, toggleTheme, profilePicPath, setProfilePicPath } = props;
     const navigate = useNavigate();
 
     const changeTheme = () => {
@@ -21,7 +21,7 @@ const Header = (props) => {
             <div className="logo" onClick={() => navigate("/")}>SHUTTLE UP</div>
             <div className="button-container">
                 <button onClick={() => changeTheme()} className="toggle-theme" aria-label="toggle-theme"><img src={themeIcon} alt="Theme toggle" /></button>
-                {user ? <LoggedIn setUser={setUser}/> : <LoggedOut />}
+                {user ? <LoggedIn /> : <LoggedOut />}
             </div>
         </div>
     )
