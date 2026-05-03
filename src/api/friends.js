@@ -47,4 +47,17 @@ const deleteFriendRequest = async(username) => {
     const data = await res.json();
     return {res, data};
 }
-export { getFriends, deleteFriend, getFriendRequests, deleteFriendRequest };
+
+const getUsers = async() => {
+    const res = await fetch(`${API_BASE}api/friends`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+    });
+    const data = await res.json();
+    return { res, data };
+}
+
+export { getFriends, deleteFriend, getFriendRequests, deleteFriendRequest, getUsers };

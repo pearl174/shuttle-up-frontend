@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { getFriends, deleteFriend } from "../../api/friends";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function FriendList() {
     const [friends, setFriends] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const params = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchFriends = async() => {

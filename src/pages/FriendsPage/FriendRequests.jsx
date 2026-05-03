@@ -47,7 +47,7 @@ export default function FriendRequests() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     />
-            <ul className="friend-list">
+            <ul className="friend-request-list">
                 {friendRequests.filter((friendRequest) => friendRequest.user.username.includes(searchTerm)).map(friendRequest => (
                     <li className="friend-request" key={friendRequest.user.username}>{friendRequest.user.username} 
                     <div className="friend-request-actions">

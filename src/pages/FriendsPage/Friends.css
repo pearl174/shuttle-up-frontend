@@ -22,13 +22,13 @@
     padding: 2em 2em;
 }
 
-.friend-list {
+.friend-list, .friend-request-list, .friend-user-list {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-.friend, .friend-request {
+.friend, .friend-request, .friend-user {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,12 +46,7 @@
     margin-bottom: 1em;
 }
 
-.friend-actions {
-    display: flex;
-    gap: 0.5em;
-}
-
-.friend-request-actions {
+.friend-actions, .friend-request-actions, .user-friend-actions {
     display: flex;
     gap: 0.5em;
 }
