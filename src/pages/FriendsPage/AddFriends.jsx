@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getUsers } from "../../api/friends";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../../config";
 
 export default function AddFriends() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -29,6 +30,33 @@ export default function AddFriends() {
         fetchUsers().catch(err => console.error(err));
     }, []);
 
+    const sendFriendRequest = async(friendUsername) => {
+        try {
+            const res = await fetch(`${API_BASE}api/friends/requests/${friendUsername}`,{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            });
+            const data = await res.json();
+            if (res.status === 401) {
+                console.log(data);
+                alert("Something went wrong. Please login again.");
+                localStorage.removeItem("token");
+                navigate("/login");
+            } else if (res.status === 500) {
+                alert("Something went wrong");
+            } else if (res.status === 200) {
+                console.log(`Sent friend request to ${friendUsername}!`);
+                setUsers(users.filter((profile) => profile.user.username != friendUsername))
+            } else {
+                console.log("lol idk what's happening");
+            }
+        } catch(err) {
+            console.error(err);
+        }
+    }
     return (
         <>
             <input 

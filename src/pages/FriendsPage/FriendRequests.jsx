@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import AddFriends from "./AddFriends";
 import { API_BASE } from "../../../config";
 
-export default function FriendRequests({setMode}) {
+export default function FriendRequests() {
     const [friendRequests, setFriendRequests] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
@@ -53,7 +53,7 @@ export default function FriendRequests({setMode}) {
                 // navigate(`/profile/${username}`);
             } else if (res.status === 200) {
                 console.log("Heh you're frens now");
-                setMode("friends");
+                setFriendRequests(friendRequests.filter((friendRequest) => friendRequest.user.username != friend))
             } else {
                 console.log("lol idk what's happening");
                 alert("ahem. smth is wrong here");
