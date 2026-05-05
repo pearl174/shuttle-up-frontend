@@ -41,6 +41,7 @@ export default function FriendList() {
             alert("Something went wrong");
         } else if (res.status === 200) {
             setFriends(friends.filter(frnd => frnd.user.username != friend));
+            console.log("u murdered ur fren D:")
         } else {
             console.log("Something unexpected happened");
         }
@@ -59,7 +60,7 @@ export default function FriendList() {
                     <div className="friend-actions">
                         <button className="primary-btn">Play</button>
                         <button className="primary-btn">View</button>
-                        <button className="primary-btn" onClick={() => handleRemove(friend)}>Remove</button>
+                        <button className="primary-btn" onClick={() => handleRemove(friend.user.username)}>Remove</button>
                     </div>
                     </li>
                 ))}
