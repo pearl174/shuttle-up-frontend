@@ -21,7 +21,7 @@ export default function Friends() {
             </div>
             <div className="friends-list-container">
                 {mode === "friends"? <FriendList />
-                :mode ==="friend-requests"? <FriendRequests />
+                :mode ==="friend-requests" ? <FriendRequests setMode={setMode}/>
                 :<AddFriends />}
             </div>
         </div>
