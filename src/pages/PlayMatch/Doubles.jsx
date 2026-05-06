@@ -1,14 +1,15 @@
 import { useState } from "react";
+import { useEffect } from "react";
+import { getFriends } from "../../api/friends";
 
-export default function Doubles() {
+export default function Doubles({friends}) {
     const [player1, setPlayer1] = useState(localStorage.getItem("username"));
-    const [friends, setFriends] = useState(['john', 'amy', 'hardin']);
-    
+
     const renderInput = (playerName) => {
         const [showSuggestions, setShowSuggestions] = useState(false);
         const [player, setPlayer] = useState("");
 
-        const suggestions = player.trim() === ""? [] : friends.filter(f => f.toLowerCase().includes(player.toLowerCase()));
+        const suggestions = player.trim() === ""? [] : friends.filter(f => f.user.username.toLowerCase().includes(player.toLowerCase()));
         const handleSelect = (friend) => {
             setPlayer(friend);
             setShowSuggestions(false);
@@ -28,7 +29,7 @@ export default function Doubles() {
                 {suggestions.length > 0 && showSuggestions && (
                     <ul className="suggestions">
                         {suggestions.map(friend => (
-                            <li key={friend} onClick={() => handleSelect(friend)}>{friend}</li>
+                            <li key={friend.user.username} onClick={() => handleSelect(friend.user.username)}>{friend.user.username}</li>
                         ))}
                     </ul>
                 )}

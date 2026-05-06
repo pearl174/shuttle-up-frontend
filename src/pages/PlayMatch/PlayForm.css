@@ -12,6 +12,7 @@
     border-radius: 6px;
     padding: 3em 2em;
     margin-top: 4em;
+    max-height: 570px;
 }
 
 .buttons-playmatch {
@@ -27,6 +28,7 @@
 .start-match-button {
     width: 50%;
     margin: 0 auto;
+    margin-top: 2em;
 }
 
 .suggestions-wrapper {
@@ -66,10 +68,6 @@ li:hover {
     border: 1px solid var(--bg);
 }
 
-.start-match-button {
-    margin-top: 3em;
-}
-
 .team-label {
     margin: 0;
     margin-bottom: 1em;
@@ -80,6 +78,5 @@ li:hover {
 }
 
 form {
-    max-height: 550px;
     box-sizing: border-box;
 }
