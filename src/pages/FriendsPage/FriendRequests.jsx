@@ -65,7 +65,34 @@ export default function FriendRequests() {
     }
 
     const declineFriendRequest = async (friend) => {
-        // use decline friend route 
+        try {
+            const res = await fetch(`${API_BASE}api/friends/requests/${friend}`,{
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            }
+            );
+            const data = res.json();
+            if (res.status === 401) {
+                alert("Something went wrong. Please login again.");
+                localStorage.removeItem("token");
+                navigate("/login");
+            } else if (res.status === 500) {
+                alert("Something went wrong. Please try again.");
+                // navigate(`/profile/${username}`);
+            } else if (res.status === 200) {
+                console.log("U murdered the potential fren :/");
+                setFriendRequests(friendRequests.filter((friendRequest) => friendRequest.user.username != friend))
+            } else {
+                console.log("lol idk what's happening");
+                alert("ahem. smth is wrong here");
+                // navigate(`/profile/${username}`);
+            }
+        } catch(err) {
+            console.error(err);
+        }
     }
     return (
         <>
@@ -81,6 +108,7 @@ export default function FriendRequests() {
                     <div className="friend-request-actions">
                         <button className="primary-btn accept" onClick={() => acceptFriendRequest(friendRequest.user.username)}>Accept</button>
                         <button className="primary-btn decline" onClick={() => declineFriendRequest(friendRequest.user.username)}>Decline</button>
+                        <button className="primary-btn">View</button>
                     </div>
                     </li>
                 ))}
