@@ -14,7 +14,8 @@ export default function Singles({friends}) {
     }
     const suggestions = friends.filter(friend => friend.user.username.toLowerCase().includes(player2.toLowerCase()));
     const handleStart = () => {
-        navigate("/timer")
+        console.log("child function")
+        navigate("/letsPlay");
     }
     return (
         <>
@@ -46,7 +47,7 @@ export default function Singles({friends}) {
                     </ul>
                 )}
             </div>
-            <button type="submit" className="start-match-button primary-btn" onClick={() => handleStart()}>Start Match</button>
+            <button type="submit" className="start-match-button primary-btn" onSubmit   ={() => handleStart()}>Start Match</button>
         </>
     )
 }

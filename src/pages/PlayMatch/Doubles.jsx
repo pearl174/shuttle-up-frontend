@@ -14,6 +14,9 @@ export default function Doubles({friends}) {
             setPlayer(friend);
             setShowSuggestions(false);
         }
+        const handleStart = () => {
+            navigate("/letsPlay");
+        }
         return (
             <div className="suggestions-wrapper">
                 <input 
@@ -54,7 +57,7 @@ export default function Doubles({friends}) {
             {renderInput("player-3")}
             <label htmlFor="player-4" id="p4">Player 4</label>
             {renderInput("player-4")}
-            <button type="submit" className="start-match-button primary-btn">Start Match</button>
+            <button type="submit" className="start-match-button primary-btn" onSubmit={() => handleStart()}>Start Match</button>
         </>
     )
 }
