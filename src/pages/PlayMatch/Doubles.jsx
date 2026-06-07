@@ -9,7 +9,7 @@ export default function Doubles({friends}) {
         const [showSuggestions, setShowSuggestions] = useState(false);
         const [player, setPlayer] = useState("");
 
-        const suggestions = player.trim() === ""? [] : friends.filter(f => f.user.username.toLowerCase().includes(player.toLowerCase()));
+        const suggestions = friends.filter(f => f.user.username.toLowerCase().includes(player.toLowerCase()));
         const handleSelect = (friend) => {
             setPlayer(friend);
             setShowSuggestions(false);
@@ -52,8 +52,9 @@ export default function Doubles({friends}) {
             <h3 className="team-2 team-label">Team 2</h3>
             <label htmlFor="player-3">Player 3</label>
             {renderInput("player-3")}
-            <label htmlFor="player-4">Player 4</label>
+            <label htmlFor="player-4" id="p4">Player 4</label>
             {renderInput("player-4")}
+            <button type="submit" className="start-match-button primary-btn">Start Match</button>
         </>
     )
 }

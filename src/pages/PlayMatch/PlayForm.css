@@ -46,13 +46,9 @@
     padding-left: 0;
 }
 
-#player-2, #player-4 {
+#player-2, #player-4, #player-3 {
     width: 100%;
     margin-bottom: 0;
-}
-
-#player-3 {
-    width: 100%;
 }
 
 li {
@@ -79,4 +75,8 @@ li:hover {
 
 form {
     box-sizing: border-box;
+}
+
+#p4 {
+    margin-top: 1em;
 }

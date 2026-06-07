@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getFriends } from "../../api/friends.js";
+import { API_BASE } from "../../../config.js";
 
 export default function Singles({friends}) {
     const navigate = useNavigate();
@@ -11,8 +12,10 @@ export default function Singles({friends}) {
         setPlayer2(friend);
         setShowSuggestions(false);
     }
-    const suggestions = player2.trim() === ""? [] : friends.filter(friend => friend.user.username.toLowerCase().includes(player2.toLowerCase()));
-    
+    const suggestions = friends.filter(friend => friend.user.username.toLowerCase().includes(player2.toLowerCase()));
+    const handleStart = () => {
+        navigate("/timer")
+    }
     return (
         <>
             <label htmlFor="player-1">Player 1</label>
@@ -43,6 +46,7 @@ export default function Singles({friends}) {
                     </ul>
                 )}
             </div>
+            <button type="submit" className="start-match-button primary-btn" onClick={() => handleStart()}>Start Match</button>
         </>
     )
 }

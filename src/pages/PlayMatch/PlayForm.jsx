@@ -49,7 +49,6 @@ export default function PlayForm() {
                 </button>
             </div>
             {mode === "singles"? <Singles friends={friends} />:<Doubles friends={friends}/>}
-            <button type="submit" className="start-match-button primary-btn">Start Match</button>
         </form>
     )
 }
