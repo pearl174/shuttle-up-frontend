@@ -1,0 +1,22 @@
+.loading {
+    width: 560px;
+    height: 300px;
+    background-image: url('../../assets/loading_screen_spritesheet_smol.png');
+    background-size: 2800px 300px;  /* 5600/2 x 601/2 */
+    background-repeat: no-repeat;
+    animation: loading 0.75s steps(5) infinite;
+    margin: auto;
+    margin-top: 4em;
+}
+
+@keyframes loading {
+    from { background-position: 0 0; }
+    to   { background-position: -2800px 0; }
+}
+
+.loading-text {
+    height: fit-content;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
