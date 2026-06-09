@@ -6,7 +6,7 @@ import Profile from "./pages/Profile/Profile.jsx";
 import PlayMatch from "./pages/PlayMatch/PlayMatch.jsx";
 import Friends from "./pages/FriendsPage/Friends.jsx";
 import LetsPlay from "./pages/LetsPlay/LetsPlay.jsx";
-import Loading from "./pages/Loading/Loading.jsx";
+import FlipClock from "./pages/LetsPlay/FlipClock.jsx";
 
 const routes = [
     {
@@ -39,7 +39,7 @@ const routes = [
             },
             {
                 path: "/letsPlay",
-                element: <Loading />
+                element: <FlipClock />
             }
         ]
     }
