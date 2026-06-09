@@ -33,3 +33,4 @@ look for more optimizations
 when navigating from friends page to play match, somehow pass the p2 from there only. its fine 
 if the p2 doesn't show up in doubles (idk actually)
 
+loading page dark mode nothing there. add 
