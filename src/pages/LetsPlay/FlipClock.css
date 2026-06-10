@@ -17,6 +17,8 @@
     gap: 2px;
     flex-direction: column;
     align-items: center;
+    background-color: var(--bg-alt);
+    color: var(--text);
 }
 
 .card-upper, .card-lower {
@@ -43,4 +45,9 @@
 
 .number-upper {
     top: 0;
+    transition: transform, 0.5s, linear;
+}
+
+.flip {
+    transform: rotateX(180deg);
 }
