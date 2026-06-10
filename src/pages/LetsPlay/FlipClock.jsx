@@ -4,12 +4,20 @@ export default function FlipClock() {
     return (
         <div className="flipclock-container">
             <div className="minutes-card">
-                <div className="minutes down">11</div>
-                <div className="minutes up">11</div>
+                <div className="card-upper">
+                    <div className="number-upper">11</div>
+                </div>
+                <div className="card-lower">
+                    <div className="number-lower">11</div>
+                </div>
             </div>
             <div className="seconds-card">
-                <div className="seconds down">00</div>
-                <div className="seconds up">00</div>
+                <div className="card-upper">
+                    <div className="number-upper">00</div>
+                </div>
+                <div className="card-lower">
+                    <div className="number-lower">00</div>
+                </div>
             </div>
         </div>
     )
