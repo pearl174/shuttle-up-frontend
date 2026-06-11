@@ -45,7 +45,7 @@
 
 .number-upper {
     top: 0;
-    transition: transform, 0.5s, linear;
+    transition: transform 0.5s linear;
 }
 
 .flip {

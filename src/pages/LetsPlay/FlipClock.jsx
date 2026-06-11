@@ -1,9 +1,14 @@
 import "./FlipClock.css";
+import { useState } from "react";
 
 export default function FlipClock() {
     const [flip, setFlip] = useState(false);
+    const [seconds, setSeconds] = useState(() => {
+        return 0;
+    })
     const handleFlip = () => {
         setFlip(true);
+
         const timer = setTimeout(() => {
             setFlip(false);
         }, 1000);
@@ -12,7 +17,7 @@ export default function FlipClock() {
         <div className="flipclock-container">
             <div className="minutes-card">
                 <div className="card-upper">
-                    <div className="number-upper" onClick={handleFlip}>11</div>
+                    <div className={`number-upper ${flip ? "flip" : ""}`} onClick={handleFlip}>11</div>
                 </div>
                 <div className="card-lower">
                     <div className="number-lower">11</div>
