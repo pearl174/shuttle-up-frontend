@@ -45,9 +45,15 @@
 
 .number-upper {
     top: 0;
-    transition: transform 0.5s linear;
+    transform: rotateX(0deg);
+    transform-origin: center bottom;
+}
+
+.invisible {
+    visibility: hidden;
 }
 
 .flip {
-    transform: rotateX(180deg);
+    transform: rotateX(90deg);
+    transition: transform 0.5s linear;
 }
