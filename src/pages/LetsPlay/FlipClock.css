@@ -57,3 +57,14 @@
     transform: rotateX(90deg);
     transition: transform 0.5s linear;
 }
+
+.number-lower.flipper {
+    transform: rotateX(-90deg);
+    transform-origin: center top;
+}
+
+.number-lower.bottomFlip {
+    transform: rotateX(0deg);
+    transition: transform 0.5s linear;
+    transition-delay: 0.2s;
+}
