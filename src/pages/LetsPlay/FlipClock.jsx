@@ -3,34 +3,30 @@ import { useEffect, useState } from "react";
 
 export default function FlipClock() {
     const [flip, setFlip] = useState(false);
-    const [bottomFlip, setBottomFlip] = useState(false);
-    const [secondsTop, setSecondsTop] = useState(0);
-    const [secondsBottom, setSecondsBottom] = useState(0);
+    const [seconds, setSeconds] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [startCounting, setStartCounting] = useState(true);
 
     useEffect(() => {
         const interval = setInterval(() => {
             setFlip(true);
-            setBottomFlip(true);
+            setSeconds((s) => {
+                if (s === 60) {
+                    return 0;
+                } else return s + 1;
+            }); 
         }, 1000);
         return () => clearInterval(interval);
     }, []);
     // }, [startCounting]);
 
+    const onFlipStart = () => {
+            
+    }
     const onFlipEnd = () => {
-        setSecondsTop((s) => {
-            if (s === 60) {
-                return 0;
-            } else return s + 1;
-        });     
         setFlip(false);
     }
 
-    const onBottomFlipEnd = () => {
-        setBottomFlip(false);
-        setSecondsBottom(secondsTop);
-    }
     return (
         <div className="flipclock-container">
             <div className="minutes-card">
@@ -42,16 +38,10 @@ export default function FlipClock() {
                 </div>
             </div>
             <div className="seconds-card">
-                <div className="card-upper">
-                    <div className={`number-upper ${flip? "": "invisible"}`}>{secondsTop + 1}</div>
-                    <div className={`number-upper ${flip? "flip": ""}`}
-                        onTransitionEnd={onFlipEnd}>{secondsTop}</div>
-                </div>
-                <div className="card-lower">
-                    <div className={`number-lower flipper ${bottomFlip? "bottomFlip": ""}`}
-                    onTransitionEnd={onBottomFlipEnd}>{secondsBottom + 1}</div>
-                    <div className={`number-lower`}>{secondsBottom}</div>
-                </div>
+                <div className={`card-upper`}><div className={`number-upper`}>{seconds + 1}</div></div>
+                <div className={`card-upper ${flip? "flip" : ""} non-static`}><div className={`number-upper`}>{seconds}</div></div>
+                <div className="card-lower"><div className={`number-lower`}>{seconds}</div></div>
+                <div onAnimationEnd={onFlipEnd} className={`card-lower ${flip? "flip" : ""}`}><div className={`number-lower`}>{seconds + 1}</div></div>
             </div>
         </div>
     )

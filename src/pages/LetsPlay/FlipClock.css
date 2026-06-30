@@ -13,20 +13,20 @@
     height: 4em;
     border: 1px solid black;
     border-radius: 0.5em;
-    display: flex;
-    gap: 2px;
-    flex-direction: column;
-    align-items: center;
     background-color: var(--bg-alt);
     color: var(--text);
+    position: relative;
+    perspective: 2000px;
 }
 
 .card-upper, .card-lower {
     width: 100%;
-    position: relative;
-    flex: 1;
+    position: absolute;
+    height: 49%;
     overflow: hidden;
-    perspective: 250px;
+    border: 1px solid var(--bg-alt);
+    border-radius: 0.5em;
+    background-color: var(--bg-alt);
 }
 
 .number-upper, .number-lower {
@@ -40,32 +40,52 @@
     justify-content: center;
 }
 
-.number-lower {
+.number-lower, .card-lower {
     bottom: 0;
 }
 
-.number-upper {
+.number-upper, .card-upper {
     top: 0;
-    transform: rotateX(0deg);
+}
+
+.card-upper {
     transform-origin: center bottom;
 }
 
-.invisible {
-    visibility: hidden;
-}
-
-.flip {
-    transform: rotateX(90deg);
-    transition: transform 0.5s linear;
-}
-
-.number-lower.flipper {
-    transform: rotateX(-90deg);
+.card-lower {
     transform-origin: center top;
 }
+.flip.card-upper {
+    animation: flipTop .3s ease-in-out forwards;
+}
 
-.number-lower.bottomFlip {
-    transform: rotateX(0deg);
-    transition: transform 0.5s linear;
-    transition-delay: 0.2s;
+.flip.card-lower {
+    animation: flipBottom .6s ease-in-out forwards;
+}
+.non-static {
+    opacity: 0;
+}
+@keyframes flipTop {
+    from {
+        opacity: 100%;
+        transform: rotateX(0deg);
+    }
+    to {
+        opacity: 100%;
+        transform: rotateX(-90deg);
+    }
+}
+
+@keyframes flipBottom {
+    0%, 50% {
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+    51% {
+        opacity: 100%;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 100%;
+    }
 }
