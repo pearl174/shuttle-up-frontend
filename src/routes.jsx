@@ -6,7 +6,7 @@ import Profile from "./pages/Profile/Profile.jsx";
 import PlayMatch from "./pages/PlayMatch/PlayMatch.jsx";
 import Friends from "./pages/FriendsPage/Friends.jsx";
 import LetsPlay from "./pages/LetsPlay/LetsPlay.jsx";
-import FlipClock from "./pages/LetsPlay/FlipClock.jsx";
+import FlipClock from "./pages/LetsPlay/ScoreBoard.jsx";
 
 const routes = [
     {

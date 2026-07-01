@@ -1,0 +1,94 @@
+.flipclock-container {
+    display: flex;
+    width: 80%;
+    gap: 0.3em;
+    font-size: 100px;
+    align-items: center;
+    margin: auto;
+    user-select: none;
+    background-color: var(--bg);
+    padding: 0.2em 0.2em;
+}
+
+.minutes-card, .seconds-card {
+    font-family: 'HelveticaNeue-CondensedBold', 'Helvetica Neue';
+    flex: 1;
+    height: 4em;
+    border: 1px solid var(--primary);
+    border-radius: 0.5em;
+    background-color: var(--bg-alt);
+    color: var(--text);
+    position: relative;
+    perspective: 2000px;
+}
+
+.card-upper, .card-lower {
+    width: 100%;
+    position: absolute;
+    height: 50%;
+    overflow: hidden;
+    border: 1px solid var(--bg-alt);
+    border-radius: 0.5em;
+    background-color: var(--bg-alt);
+}
+
+.number-upper, .number-lower {
+    position: absolute;
+    /* font-size: clamp(100px, 20vw, 4em); */
+    font-size: 4em;
+    width: 100%;
+    height: 200%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number-lower, .card-lower {
+    bottom: 0;
+}
+
+.number-upper, .card-upper {
+    top: 0;
+}
+
+.card-upper {
+    transform-origin: center bottom;
+}
+
+.card-lower {
+    transform-origin: center top;
+}
+.flip.card-upper {
+    animation: flipTop .3s ease-in-out forwards;
+}
+
+.flip.card-lower {
+    animation: flipBottom .6s ease-in-out forwards;
+}
+.non-static {
+    opacity: 0;
+}
+@keyframes flipTop {
+    from {
+        opacity: 100%;
+        transform: rotateX(0deg);
+    }
+    to {
+        opacity: 100%;
+        transform: rotateX(-90deg);
+    }
+}
+
+@keyframes flipBottom {
+    0%, 50% {
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+    51% {
+        opacity: 100%;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 100%;
+    }
+}
